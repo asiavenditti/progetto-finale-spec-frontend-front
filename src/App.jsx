@@ -1,0 +1,34 @@
+
+import './App.css'
+import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom'
+import HomePage from './pages/HomePage'
+import CarsListPage from './pages/CarsListPage'
+import DetailPage from './pages/DetailPage'
+import FavoritesPage from './pages/FavoritesPage'
+import ComparePage from './pages/ComparePage'
+import DefaultLayout from './layout/DefaultLayout'
+import GlobalProvider from './context/GlobalContext'
+
+function App() {
+
+
+  return (
+    <>
+      <GlobalProvider>
+        <BrowserRouter>
+          <DefaultLayout>
+            <Routes>
+              <Route path='/' element={<HomePage />} />
+              <Route path='/cars' element={<CarsListPage />} />
+              <Route path='/cars/:id' element={<DetailPage />} />
+              <Route path='/favorites' element={<FavoritesPage />} />
+              <Route path='/compare' element={<ComparePage />} />
+            </Routes>
+          </DefaultLayout>
+        </BrowserRouter>
+      </GlobalProvider>
+    </>
+  )
+}
+
+export default App

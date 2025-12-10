@@ -1,0 +1,452 @@
+[
+    {
+        "id": 1,
+        "title": "BMW Serie 3",
+        "category": "Berlina",
+        "brand": "BMW",
+        "price": 45000,
+        "year": 2023,
+        "fuelType": "Diesel",
+        "horsepower": 190,
+        "transmission": "Automatico",
+        "seats": 5,
+        "description": "Berlina sportiva di lusso con interni raffinati e tecnologia avanzata",
+        "colors": [
+            "Nero",
+            "Bianco",
+            "Grigio"
+        ],
+        "features": [
+            "Cruise Control",
+            "Park Assist",
+            "Bluetooth",
+            "Navigatore GPS",
+            "Sedili riscaldati",
+            "Fari LED"
+        ],
+        "image": "/images/bmw-serie3.png",
+        "rating": 4.5,
+        "createdAt": "2024-01-01T10:00:00.000Z",
+        "updatedAt": "2024-01-01T10:00:00.000Z"
+    },
+    {
+        "id": 2,
+        "title": "Fiat 500",
+        "category": "Citycar",
+        "brand": "Fiat",
+        "price": 18000,
+        "year": 2024,
+        "fuelType": "Elettrica",
+        "horsepower": 118,
+        "transmission": "Automatico",
+        "seats": 4,
+        "description": "Compatta elettrica perfetta per la città, design iconico italiano",
+        "colors": [
+            "Rosso",
+            "Verde",
+            "Giallo"
+        ],
+        "features": [
+            "Bluetooth",
+            "Climatizzatore",
+            "Telecamera posteriore"
+        ],
+        "image": "/images/fiat-500.png",
+        "rating": 4.2,
+        "createdAt": "2024-01-02T10:00:00.000Z",
+        "updatedAt": "2024-01-02T10:00:00.000Z"
+    },
+    {
+        "id": 3,
+        "title": "Range Rover Evoque",
+        "category": "SUV",
+        "brand": "Land Rover",
+        "price": 52000,
+        "year": 2023,
+        "fuelType": "Ibrida",
+        "horsepower": 249,
+        "transmission": "Automatico",
+        "seats": 5,
+        "description": "SUV compatto di lusso con capacità off-road e comfort premium",
+        "colors": [
+            "Nero",
+            "Grigio",
+            "Verde Militare"
+        ],
+        "features": [
+            "Cruise Control",
+            "Park Assist",
+            "Navigatore GPS",
+            "Sedili in pelle",
+            "Tetto panoramico",
+            "Trazione integrale",
+            "Sensori di parcheggio"
+        ],
+        "image": "/images/range-rover-evoque.png",
+        "rating": 4.6,
+        "createdAt": "2024-01-03T10:00:00.000Z",
+        "updatedAt": "2024-01-03T10:00:00.000Z"
+    },
+    {
+        "id": 4,
+        "title": "Porsche 911 Carrera",
+        "category": "Sportiva",
+        "brand": "Porsche",
+        "price": 98000,
+        "year": 2024,
+        "fuelType": "Benzina",
+        "horsepower": 385,
+        "transmission": "Manuale",
+        "seats": 4,
+        "description": "Icona sportiva tedesca, prestazioni eccezionali e handling perfetto",
+        "colors": [
+            "Rosso",
+            "Nero",
+            "Argento"
+        ],
+        "features": [
+            "Scarico sportivo",
+            "Sospensioni adattive",
+            "Sedili sportivi",
+            "Cerchi in lega da 20",
+            "Launch control",
+            "Navigatore GPS"
+        ],
+        "image": "/images/porsche-911.png",
+        "rating": 4.9,
+        "createdAt": "2024-01-04T10:00:00.000Z",
+        "updatedAt": "2024-01-04T10:00:00.000Z"
+    },
+    {
+        "id": 5,
+        "title": "Volkswagen Tiguan",
+        "category": "SUV",
+        "brand": "Volkswagen",
+        "price": 35000,
+        "year": 2023,
+        "fuelType": "Diesel",
+        "horsepower": 150,
+        "transmission": "Automatico",
+        "seats": 5,
+        "description": "SUV familiare affidabile e spazioso, perfetto per ogni esigenza",
+        "colors": [
+            "Grigio",
+            "Blu",
+            "Bianco"
+        ],
+        "features": [
+            "Bluetooth",
+            "Climatizzatore automatico",
+            "Sensori di parcheggio",
+            "Cruise Control",
+            "Telecamera posteriore",
+            "Volante in pelle"
+        ],
+        "image": "/images/volkswagen-tiguan.png",
+        "rating": 4.3,
+        "createdAt": "2024-01-05T10:00:00.000Z",
+        "updatedAt": "2024-01-05T10:00:00.000Z"
+    },
+    {
+        "id": 6,
+        "title": "Audi A4",
+        "category": "Berlina",
+        "brand": "Audi",
+        "price": 42000,
+        "year": 2024,
+        "fuelType": "Benzina",
+        "horsepower": 204,
+        "transmission": "Automatico",
+        "seats": 5,
+        "description": "Berlina elegante con tecnologia Quattro e interni raffinati",
+        "colors": [
+            "Rosso",
+            "Nero",
+            "Bianco"
+        ],
+        "features": [
+            "Navigatore GPS",
+            "Park Assist",
+            "Sedili riscaldati",
+            "Fari LED",
+            "Cruise Control",
+            "Bluetooth",
+            "Climatizzatore tri-zona"
+        ],
+        "image": "/images/audi-a4.png",
+        "rating": 4.4,
+        "createdAt": "2024-01-06T10:00:00.000Z",
+        "updatedAt": "2024-01-06T10:00:00.000Z"
+    },
+    {
+        "id": 7,
+        "title": "Tesla Model 3",
+        "category": "Berlina",
+        "brand": "Tesla",
+        "price": 48000,
+        "year": 2024,
+        "fuelType": "Elettrica",
+        "horsepower": 283,
+        "transmission": "Automatico",
+        "seats": 5,
+        "description": "Berlina elettrica con autopilot, zero emissioni e accelerazione fulminea",
+        "colors": [
+            "Bianco",
+            "Nero",
+            "Blu",
+            "Rosso"
+        ],
+        "features": [
+            "Autopilot",
+            "Navigatore GPS integrato",
+            "Ricarica superfast",
+            "Aggiornamenti software OTA",
+            "Schermo touch 15 pollici",
+            "Sensori 360°"
+        ],
+        "image": "/images/tesla-model3.png",
+        "rating": 4.7,
+        "createdAt": "2024-01-07T10:00:00.000Z",
+        "updatedAt": "2024-01-07T10:00:00.000Z"
+    },
+    {
+        "id": 8,
+        "title": "Jeep Wrangler",
+        "category": "SUV",
+        "brand": "Jeep",
+        "price": 46000,
+        "year": 2023,
+        "fuelType": "Benzina",
+        "horsepower": 272,
+        "transmission": "Manuale",
+        "seats": 5,
+        "description": "SUV fuoristrada leggendario, avventura pura e capacità off-road estreme",
+        "colors": [
+            "Verde",
+            "Nero",
+            "Bianco"
+        ],
+        "features": [
+            "Trazione integrale",
+            "Tetto rimovibile",
+            "Verricello",
+            "Sospensioni rialzate",
+            "Protezioni sottoscocca",
+            "Bluetooth"
+        ],
+        "image": "/images/jeep-wrangler.png",
+        "rating": 4.5,
+        "createdAt": "2024-01-08T10:00:00.000Z",
+        "updatedAt": "2024-01-08T10:00:00.000Z"
+    },
+    {
+        "id": 9,
+        "title": "Smart ForTwo",
+        "category": "Citycar",
+        "brand": "Smart",
+        "price": 15000,
+        "year": 2023,
+        "fuelType": "Elettrica",
+        "horsepower": 82,
+        "transmission": "Automatico",
+        "seats": 2,
+        "description": "Ultra compatta elettrica, perfetta per parcheggiare ovunque in città",
+        "colors": [
+            "Giallo",
+            "Rosso",
+            "Nero"
+        ],
+        "features": [
+            "Bluetooth",
+            "Climatizzatore",
+            "Radio digitale"
+        ],
+        "image": "/images/smart-fortwo.png",
+        "rating": 3.9,
+        "createdAt": "2024-01-09T10:00:00.000Z",
+        "updatedAt": "2024-01-09T10:00:00.000Z"
+    },
+    {
+        "id": 10,
+        "title": "Mercedes Classe E Station Wagon",
+        "category": "Station Wagon",
+        "brand": "Mercedes",
+        "price": 58000,
+        "year": 2024,
+        "fuelType": "Ibrida",
+        "horsepower": 211,
+        "transmission": "Automatico",
+        "seats": 5,
+        "description": "Station wagon di lusso con spazio enorme e tecnologia Mercedes-Benz",
+        "colors": [
+            "Grigio",
+            "Nero",
+            "Blu"
+        ],
+        "features": [
+            "Navigatore GPS",
+            "Sedili in pelle riscaldati",
+            "Tetto panoramico",
+            "Park Assist",
+            "Cruise Control adattivo",
+            "Sistema audio premium",
+            "Portellone elettrico",
+            "Fari LED intelligenti"
+        ],
+        "image": "/images/mercedes-classe-e.png",
+        "rating": 4.8,
+        "createdAt": "2024-01-10T10:00:00.000Z",
+        "updatedAt": "2024-01-10T10:00:00.000Z"
+    },
+    {
+        "id": 11,
+        "title": "Fiat Panda",
+        "category": "Citycar",
+        "brand": "Fiat",
+        "price": 14500,
+        "year": 2024,
+        "fuelType": "Ibrida",
+        "horsepower": 70,
+        "transmission": "Manuale",
+        "seats": 5,
+        "description": "L'auto più amata dagli italiani! Pratica, economica e affidabile per la vita di tutti i giorni",
+        "colors": [
+            "Bianco",
+            "Grigio",
+            "Azzurro"
+        ],
+        "features": [
+            "Bluetooth",
+            "Climatizzatore",
+            "Sensori di parcheggio posteriori"
+        ],
+        "image": "fiat-panda.png",
+        "rating": 4.1,
+        "createdAt": "2024-01-11T10:00:00.000Z",
+        "updatedAt": "2024-01-11T10:00:00.000Z"
+    },
+    {
+        "id": 12,
+        "title": "Ford Mustang",
+        "category": "Sportiva",
+        "brand": "Ford",
+        "price": 55000,
+        "year": 2023,
+        "fuelType": "Benzina",
+        "horsepower": 450,
+        "transmission": "Automatico",
+        "seats": 4,
+        "description": "Muscle car americana iconica, potenza pura e sound inconfondibile",
+        "colors": [
+            "Rosso",
+            "Nero",
+            "Blu",
+            "Giallo"
+        ],
+        "features": [
+            "Scarico sportivo",
+            "Launch control",
+            "Sedili sportivi",
+            "Navigatore GPS",
+            "Bluetooth",
+            "Cruise Control"
+        ],
+        "image": "ford-mustang.png",
+        "rating": 4.7,
+        "createdAt": "2024-01-12T10:00:00.000Z",
+        "updatedAt": "2024-01-12T10:00:00.000Z"
+    },
+    {
+        "id": 13,
+        "title": "Toyota Yaris Cross",
+        "category": "Crossover",
+        "brand": "Toyota",
+        "price": 28000,
+        "year": 2024,
+        "fuelType": "Ibrida",
+        "horsepower": 116,
+        "transmission": "Automatico",
+        "seats": 5,
+        "description": "Crossover ibrido giapponese, affidabilità Toyota e bassi consumi",
+        "colors": [
+            "Bianco",
+            "Rosso",
+            "Oro"
+        ],
+        "features": [
+            "Bluetooth",
+            "Climatizzatore automatico",
+            "Cruise Control",
+            "Sensori di parcheggio",
+            "Telecamera posteriore",
+            "Toyota Safety Sense"
+        ],
+        "image": "toyota-yaris-cross.png",
+        "rating": 4.4,
+        "createdAt": "2024-01-13T10:00:00.000Z",
+        "updatedAt": "2024-01-13T10:00:00.000Z"
+    },
+    {
+        "id": 14,
+        "title": "Renault Clio",
+        "category": "Citycar",
+        "brand": "Renault",
+        "price": 19500,
+        "year": 2023,
+        "fuelType": "Benzina",
+        "horsepower": 100,
+        "transmission": "Manuale",
+        "seats": 5,
+        "description": "Compatta francese elegante e moderna, perfetta per città e viaggi brevi",
+        "colors": [
+            "Giallo",
+            "Rosso",
+            "Bianco",
+            "Nero"
+        ],
+        "features": [
+            "Bluetooth",
+            "Climatizzatore",
+            "Cruise Control",
+            "Schermo touch",
+            "Sensori di parcheggio posteriori"
+        ],
+        "image": "renault-clio.png",
+        "rating": 4.2,
+        "createdAt": "2024-01-14T10:00:00.000Z",
+        "updatedAt": "2024-01-14T10:00:00.000Z"
+    },
+    {
+        "id": 15,
+        "title": "Volvo XC60",
+        "category": "SUV",
+        "brand": "Volvo",
+        "price": 54000,
+        "year": 2024,
+        "fuelType": "Ibrida",
+        "horsepower": 250,
+        "transmission": "Automatico",
+        "seats": 5,
+        "description": "SUV svedese premium con focus sulla sicurezza e design scandinavo",
+        "colors": [
+            "Grigio",
+            "Nero",
+            "Blu",
+            "Bianco"
+        ],
+        "features": [
+            "Navigatore GPS",
+            "Park Assist",
+            "Sedili riscaldati",
+            "Tetto panoramico",
+            "Cruise Control adattivo",
+            "Sistema audio Harman Kardon",
+            "Fari LED",
+            "Volvo Pilot Assist"
+        ],
+        "image": "volvo-xc60.png",
+        "rating": 4.7,
+        "createdAt": "2024-01-15T10:00:00.000Z",
+        "updatedAt": "2024-01-15T10:00:00.000Z"
+    }
+]
