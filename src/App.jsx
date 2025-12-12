@@ -1,5 +1,5 @@
 
-import './App.css'
+import './style/App.css'
 import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import CarsListPage from './pages/CarsListPage'
@@ -16,15 +16,15 @@ function App() {
     <>
       <GlobalProvider>
         <BrowserRouter>
-          <DefaultLayout>
-            <Routes>
+          <Routes>
+            <Route element={<DefaultLayout />}>
               <Route path='/' element={<HomePage />} />
               <Route path='/cars' element={<CarsListPage />} />
               <Route path='/cars/:id' element={<DetailPage />} />
               <Route path='/favorites' element={<FavoritesPage />} />
               <Route path='/compare' element={<ComparePage />} />
-            </Routes>
-          </DefaultLayout>
+            </Route>
+          </Routes>
         </BrowserRouter>
       </GlobalProvider>
     </>
