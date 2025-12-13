@@ -70,14 +70,6 @@ export default function Header() {
 
                             <span>Confronta</span>
                         </Link>
-                        <Link
-                            to="/favorites"
-                            className={`nav-link ${isActive('/favorites')}`}
-                            onClick={closeMenu}
-                        >
-                            <span>Preferiti</span>
-                            <span className="nav-icon">❤️</span>
-                        </Link>
 
 
                     </nav>
