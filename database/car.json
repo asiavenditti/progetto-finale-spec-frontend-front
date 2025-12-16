@@ -293,7 +293,7 @@
             "Portellone elettrico",
             "Fari LED intelligenti"
         ],
-        "image": "/images/mercedes-classe-e.png",
+        "image": "/images/merchedes-classe-e.png",
         "rating": 4.8,
         "createdAt": "2024-01-10T10:00:00.000Z",
         "updatedAt": "2024-01-10T10:00:00.000Z"
@@ -320,7 +320,7 @@
             "Climatizzatore",
             "Sensori di parcheggio posteriori"
         ],
-        "image": "fiat-panda.png",
+        "image": "/images/fiat-panda.png",
         "rating": 4.1,
         "createdAt": "2024-01-11T10:00:00.000Z",
         "updatedAt": "2024-01-11T10:00:00.000Z"
@@ -351,7 +351,7 @@
             "Bluetooth",
             "Cruise Control"
         ],
-        "image": "ford-mustang.png",
+        "image": "/images/ford-mustang.png",
         "rating": 4.7,
         "createdAt": "2024-01-12T10:00:00.000Z",
         "updatedAt": "2024-01-12T10:00:00.000Z"
@@ -381,7 +381,7 @@
             "Telecamera posteriore",
             "Toyota Safety Sense"
         ],
-        "image": "toyota-yaris-cross.png",
+        "image": "/images/toyota-yaris-cross.png",
         "rating": 4.4,
         "createdAt": "2024-01-13T10:00:00.000Z",
         "updatedAt": "2024-01-13T10:00:00.000Z"
@@ -411,7 +411,7 @@
             "Schermo touch",
             "Sensori di parcheggio posteriori"
         ],
-        "image": "renault-clio.png",
+        "image": "/images/renault-clio.png",
         "rating": 4.2,
         "createdAt": "2024-01-14T10:00:00.000Z",
         "updatedAt": "2024-01-14T10:00:00.000Z"
@@ -444,7 +444,7 @@
             "Fari LED",
             "Volvo Pilot Assist"
         ],
-        "image": "volvo-xc60.png",
+        "image": "/images/volvo-xc60.png",
         "rating": 4.7,
         "createdAt": "2024-01-15T10:00:00.000Z",
         "updatedAt": "2024-01-15T10:00:00.000Z"
