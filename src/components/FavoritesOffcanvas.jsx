@@ -54,7 +54,7 @@ export default function FavoritesOffcanvas({ isOpen, onClose }) {
 
                                     <div className="favorite-actions">
                                         <Link
-                                            to={`/data/${car.id}`}
+                                            to={`/cars/${car.id}`}
                                             className="btn-detail"
                                             onClick={onClose}
                                         >

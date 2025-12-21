@@ -7,6 +7,7 @@ import DetailPage from './pages/DetailPage'
 import ComparePage from './pages/ComparePage'
 import DefaultLayout from './layout/DefaultLayout'
 import GlobalProvider from './context/GlobalContext'
+import './style/App.css'
 
 function App() {
 

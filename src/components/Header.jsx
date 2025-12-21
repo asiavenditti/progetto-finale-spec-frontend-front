@@ -9,6 +9,7 @@ export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { favorites } = useContext(GlobalContext);
     const [isOffcanvasOpen, setIsOffcanvasOpen] = useState(false);
+    const { compareList } = useContext(GlobalContext)
 
     const isActive = (path) => {
         return location.pathname === path ? 'active' : '';
@@ -68,8 +69,8 @@ export default function Header() {
                                 to="/compare"
                                 className={`nav-link ${isActive('/compare')}`}
                                 onClick={closeMenu}
-                            >
-                                <span>Confronta</span>
+                            >   Confronta {compareList.length > 0 && `(${compareList.length})`}
+
                             </Link>
 
                             {/* Pulsante Preferiti */}

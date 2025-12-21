@@ -325,3 +325,47 @@
         align-items: flex-start;
     }
 }
+
+/* Confronto */
+
+.custom-compare-btn {
+    /* Dimensioni e Forma */
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 20px;
+    border: none;
+
+    /* Font */
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: white;
+
+    /* Gradiente Leggero (Navy) */
+    background: linear-gradient(to bottom, #23305a 0%, #1c2c57 100%);
+
+    /* Ombra discreta per profondità */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.custom-compare-btn:hover {
+    /* Schiarisce leggermente al passaggio */
+    background: linear-gradient(to bottom, #2b3b6e 0%, #1c294d 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.custom-compare-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Stato quando l'auto è già in confronto  */
+.custom-compare-btn.is-active {
+    background: linear-gradient(to bottom, #e63946 0%, #a1001b 100%);
+}
+
+.custom-compare-btn.is-active:hover {
+    background: linear-gradient(to bottom, #f63a4a 0%, #c20f1e 100%);
+}

@@ -11,18 +11,18 @@ export default function CarsListPage() {
     const [sortBy, setSortBy] = useState('title-asc');
 
     // Categorie 
-    const categories = useMemo(() => {
+    const categories = (() => {
         if (!data) return [];
-        return [...new Set(data.map(car => car.category))];
 
-    }, [data]);
+        return [...new Set(data.map(car => car.category))];
+    })();
 
     // Filtraggio e ordinamento
     const filteredAndSortedCars = useMemo(() => {
         if (!data) return [];
 
         // Filtro
-        let result = data.filter(car => {
+        let result = [...data].filter(car => {
             const matchesSearch = car.title.toLowerCase().includes(searchTerm.toLowerCase());
             const matchesCategory = categoryFilter ? car.category === categoryFilter : true;
             return matchesSearch && matchesCategory;
@@ -63,7 +63,7 @@ export default function CarsListPage() {
         );
     }
 
-    // Errori
+    // Errori e stati vuoti
 
     if (error) {
         return (

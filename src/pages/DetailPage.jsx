@@ -8,7 +8,9 @@ import '../style/CarDetail.css';
 export default function DetailPage() {
     const { id } = useParams();
     const navigate = useNavigate();
-    const { favorites, toggleFavorite } = useContext(GlobalContext);
+
+    // estrazione dal context
+    const { favorites, toggleFavorite, toggleCompare, isInCompare } = useContext(GlobalContext);
 
     const API_URL = import.meta.env.VITE_API_URL;
     const { data, loading, error } = useFetch(`${API_URL}/cars/${id}`);
@@ -28,7 +30,7 @@ export default function DetailPage() {
         return (
             <div className="container mt-5">
                 <div className="alert alert-danger text-center">
-                    <h4> Automobile non trovata</h4>
+                    <h4>⚠️ Automobile non trovata</h4>
                     <p>L'auto che stai cercando non esiste.</p>
                     <Link to="/cars" className="btn btn-primary mt-3">
                         Torna al Catalogo
@@ -39,10 +41,10 @@ export default function DetailPage() {
     }
 
     const isFavorite = favorites.includes(car.id);
+    const isInComparison = isInCompare(car.id);
 
     return (
         <div className="container py-5">
-            {/* Torna indietro */}
             <button
                 onClick={() => navigate(-1)}
                 className="back-btn-detail"
@@ -51,12 +53,20 @@ export default function DetailPage() {
                 <span>Torna indietro</span>
             </button>
 
-
             <div className="detail-card-wrapper">
-                {/* SEZIONE IMMAGINE */}
                 <div className="image-section-detail">
                     <div className="badges-detail">
                         <span className="category-badge-detail">{car.category}</span>
+
+                        {/* Bottone confronto */}
+                        <div className="text-center my-4">
+                            <button
+                                className={`custom-compare-btn ${isInComparison ? 'is-active' : ''}`}
+                                onClick={() => toggleCompare(car)}
+                            >
+                                {isInComparison ? '✖ Rimuovi dal confronto' : ' Aggiungi al confronto'}
+                            </button>
+                        </div>
                         <button
                             className="favorite-btn-detail"
                             onClick={() => toggleFavorite(car.id)}
@@ -78,20 +88,17 @@ export default function DetailPage() {
                         <p className="car-brand-detail">{car.brand}</p>
                         <div className="price-detail">€ {car.price.toLocaleString('it-IT')}</div>
                     </div>
+
                 </div>
 
-                {/* SEZIONE INFO */}
                 <div className="info-section-detail">
                     <div className="row g-4">
-                        {/* Colonna Sinistra */}
                         <div className="col-lg-6">
-                            {/* Descrizione */}
                             <div className="info-block-detail">
                                 <h3 className="info-title-detail">Descrizione</h3>
                                 <p className="description-text-detail">{car.description}</p>
                             </div>
 
-                            {/* Specifiche Tecniche */}
                             <div className="info-block-detail">
                                 <h3 className="info-title-detail">Specifiche Tecniche</h3>
                                 <div className="specs-list-detail">
@@ -125,9 +132,7 @@ export default function DetailPage() {
                             </div>
                         </div>
 
-                        {/* Colonna Destra */}
                         <div className="col-lg-6">
-                            {/* Colori */}
                             <div className="info-block-detail">
                                 <h3 className="info-title-detail">Colori Disponibili</h3>
                                 <div className="colors-grid-detail">
@@ -139,7 +144,6 @@ export default function DetailPage() {
                                 </div>
                             </div>
 
-                            {/* Dotazioni */}
                             <div className="info-block-detail">
                                 <h3 className="info-title-detail">Dotazioni di Serie</h3>
                                 <div className="features-grid-detail">

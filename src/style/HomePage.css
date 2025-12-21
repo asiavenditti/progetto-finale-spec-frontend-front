@@ -1,88 +1,167 @@
-/* HERO SECTION */
-.hero-section {
+/* HOME PAGE*/
+
+.home-page {
     width: 100%;
-    height: 70vh;
-    background-image: linear-gradient(rgba(1, 0, 1, 0), rgba(62, 37, 101, 0)), url('/images/hero1.png');
+    overflow-x: hidden;
+}
+
+/* HERO SECTION */
+
+.hero-section {
+    position: relative;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    padding: 0 6%;
+
+    background-image: url("/images/hero5.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 
-    display: flex;
+    overflow: hidden;
+}
+
+/* Center layout */
+.hero-section.centered {
     justify-content: center;
-    align-items: center;
-    padding: 0 20px;
-    box-sizing: border-box;
-}
-
-.hero-content {
+    align-items: flex-start;
     text-align: center;
-    color: white;
-    max-width: 900px;
 }
 
+/* Overlay per la leggibilità */
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    background: radial-gradient(circle at center,
+
+            rgba(10, 14, 30, 0.185) 20%,
+            rgba(10, 14, 30, 0.112) 60%,
+            rgba(10, 14, 30, 0.123) 75%);
+
+    z-index: 1;
+}
+
+/* Hero content */
+.hero-content.centered {
+    position: relative;
+    z-index: 2;
+    max-width: 760px;
+    padding: 0 1rem;
+    margin-top: 12rem;
+}
+
+/* Title */
 .hero-content h1 {
-    font-size: 3rem;
+    font-size: 3.4rem;
     font-weight: 700;
-    margin-bottom: 1rem;
+    line-height: 1.05;
+    margin-bottom: 1.4rem;
+
+
+    color: #f9faff;
+
+    text-shadow:
+        0 2px 10px rgba(0, 0, 0, 0.45),
+        0 8px 30px rgba(0, 0, 0, 0.35);
 }
 
+/* Contenuto principale */
 .hero-content p {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    opacity: 0.9;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 2.6rem;
+
+    color: rgba(240, 245, 255, 0.9);
+    text-shadow:
+        0 2px 10px rgba(0, 0, 0, 0.45),
+        0 8px 30px rgba(0, 0, 0, 0.35);
+
 }
+
+/* Bottone esplora  */
 
 .cta-btn {
-    padding: 16px 50px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    background-color: #6928e7;
-    color: white;
+    position: relative;
+
+    padding: 0.95rem 3rem;
+
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+
+    color: #ffffff;
+
+    background: linear-gradient(135deg,
+            #00d4ff 0%,
+            #4f7cff 50%,
+            #6a5cff 100%);
+
     border: none;
-    border-radius: 12px;
+    border-radius: 999px;
+
     cursor: pointer;
-    transition: 0.2s ease;
+    text-decoration: none;
+    transition: all 0.35s ease;
 }
+
+
 
 .cta-btn:hover {
-    background-color: #8252ff;
     transform: translateY(-2px);
+    box-shadow:
+        0 15px 45px rgba(0, 153, 255, 0.6);
 }
 
+
 /* MOCKUP SECTION */
+
 .mockup-section {
-    width: 100%;
+    padding: 5rem 6%;
     display: flex;
     justify-content: center;
-    margin: 40px 0;
-    padding: 0 20px;
-    box-sizing: border-box;
+
 }
 
 .mockup-image {
-    width: 100%;
-    max-width: 1200px;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    max-width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
 }
 
 /* RESPONSIVE */
+
+@media (max-width: 1024px) {
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+}
+
 @media (max-width: 768px) {
+    .hero-section {
+        padding: 0 1.5rem;
+    }
+
+    .hero-content h1 {
+        font-size: 2.4rem;
+    }
+
+    .hero-content p {
+        font-size: 1.05rem;
+    }
+
+
+}
+
+@media (max-width: 480px) {
     .hero-content h1 {
         font-size: 2rem;
     }
 
-    .hero-content p {
-        font-size: 1rem;
-    }
-
     .cta-btn {
-        font-size: 1rem;
-        padding: 12px 30px;
-    }
-
-    .mockup-image {
-        max-width: 95%;
+        width: 100%;
+        padding: 1rem 2.6rem;
     }
 }
