@@ -1,34 +1,62 @@
-import { useContext, useState, useMemo } from 'react';
+import { useContext, useState, useMemo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { GlobalContext } from '../context/GlobalContext';
 import { Heart, HeartFill } from 'react-bootstrap-icons';
-import '../style/CarsList.css'
+import '../style/CarsList.css';
+
+// debounce 
+const debounce = (callback, delay) => {
+    let timer
+    return (value) => {
+        // reset
+        clearTimeout(timer)
+        timer = setTimeout(() => {
+            // aggiornamento dello stato dopo il delay
+            callback(value)
+        }, delay)
+    }
+}
+
 export default function CarsListPage() {
     const { data, loading, error, favorites, toggleFavorite } = useContext(GlobalContext);
 
+    // stato per la ricerca
     const [searchTerm, setSearchTerm] = useState('');
+    // stato per filtro categoria
     const [categoryFilter, setCategoryFilter] = useState('');
+    // stato per ordinamento
     const [sortBy, setSortBy] = useState('title-asc');
 
-    // Categorie 
+    // funzione debounced con useCallback
+    const debounceSetSearch = useCallback(
+        debounce(setSearchTerm, 500),
+        []
+    );
+
+    // ottengo le categorie 
     const categories = (() => {
         if (!data) return [];
-
         return [...new Set(data.map(car => car.category))];
     })();
 
-    // Filtraggio e ordinamento
+    // filtro e ordinamento con useMemo
     const filteredAndSortedCars = useMemo(() => {
         if (!data) return [];
 
-        // Filtro
+        // filtro per titolo e categoria
         let result = [...data].filter(car => {
-            const matchesSearch = car.title.toLowerCase().includes(searchTerm.toLowerCase());
-            const matchesCategory = categoryFilter ? car.category === categoryFilter : true;
+            const matchesSearch = car.title
+                .toLowerCase()
+                .includes(searchTerm.toLowerCase());
+
+            const matchesCategory = categoryFilter
+                ? car.category === categoryFilter
+                : true;
+
             return matchesSearch && matchesCategory;
         });
 
-        // Ordinamento
+        // ordinamento in base alla selezione
         if (sortBy === 'title-asc') {
             result.sort((a, b) => a.title.localeCompare(b.title));
         } else if (sortBy === 'title-desc') {
@@ -42,7 +70,7 @@ export default function CarsListPage() {
         return result;
     }, [data, searchTerm, categoryFilter, sortBy]);
 
-    // Colori badge categorie
+    // colori per i badge delle categorie
     const categoryColors = {
         Berlina: 'primary',
         SUV: 'success',
@@ -52,8 +80,7 @@ export default function CarsListPage() {
         Crossover: 'secondary',
     };
 
-
-
+    // stato di caricamento
     if (loading) {
         return (
             <div className="text-center mt-5">
@@ -63,8 +90,7 @@ export default function CarsListPage() {
         );
     }
 
-    // Errori e stati vuoti
-
+    // gestione errori
     if (error) {
         return (
             <div className="alert alert-danger text-center mt-5">
@@ -74,23 +100,26 @@ export default function CarsListPage() {
         );
     }
 
+    // stato vuoto
     if (!data || data.length === 0) {
         return <p className="text-center mt-5 text-muted">Nessuna automobile trovata</p>;
     }
 
     return (
         <div className="container py-5">
-            <h1 className="text-center mb-5 display-4 fw-bold">Catalogo Vetture</h1>
+            <h1 className="text-center mb-5 display-4 fw-bold">
+                Catalogo Vetture
+            </h1>
 
-            {/* Filtri */}
+            {/* filtri */}
             <div className="row g-3 mb-4">
                 <div className="col-md-4">
                     <input
                         type="text"
                         className="form-control"
                         placeholder="🔍 Cerca per titolo..."
-                        value={searchTerm}
-                        onChange={e => setSearchTerm(e.target.value)}
+                        // ricerca con debounce
+                        onChange={e => debounceSetSearch(e.target.value)}
                     />
                 </div>
 
@@ -102,7 +131,9 @@ export default function CarsListPage() {
                     >
                         <option value="">Tutte le categorie</option>
                         {categories.map(cat => (
-                            <option key={cat} value={cat}>{cat}</option>
+                            <option key={cat} value={cat}>
+                                {cat}
+                            </option>
                         ))}
                     </select>
                 </div>
@@ -113,15 +144,15 @@ export default function CarsListPage() {
                         value={sortBy}
                         onChange={e => setSortBy(e.target.value)}
                     >
-                        <option value="title-asc"> Titolo A-Z</option>
-                        <option value="title-desc"> Titolo Z-A</option>
-                        <option value="category-asc"> Categoria A-Z</option>
-                        <option value="category-desc"> Categoria Z-A</option>
+                        <option value="title-asc">Titolo A-Z</option>
+                        <option value="title-desc">Titolo Z-A</option>
+                        <option value="category-asc">Categoria A-Z</option>
+                        <option value="category-desc">Categoria Z-A</option>
                     </select>
                 </div>
             </div>
 
-            {/* Messaggio nessun risultato */}
+            {/* lista risultati */}
             {filteredAndSortedCars.length === 0 ? (
                 <div className="alert alert-info text-center">
                     Nessun risultato trovato. Prova a modificare i filtri.
@@ -131,25 +162,32 @@ export default function CarsListPage() {
                     {filteredAndSortedCars.map(car => (
                         <div key={car.id} className="col-sm-6 col-md-4 col-lg-3">
                             <div className="car-card">
-
-                                {/* Badge categoria */}
-                                <span className={`category-badge bg-${categoryColors[car.category] || 'dark'}`}>
+                                {/* badge categoria */}
+                                <span
+                                    className={`category-badge bg-${categoryColors[car.category] || 'dark'}`}
+                                >
                                     {car.category}
                                 </span>
 
-                                {/* Cuore preferiti */}
+                                {/* bottone preferiti */}
                                 <button
                                     className="favorite-btn"
                                     onClick={() => toggleFavorite(car.id)}
                                 >
-                                    {favorites.includes(car.id) ? <HeartFill /> : <Heart />}
+                                    {favorites.includes(car.id)
+                                        ? <HeartFill />
+                                        : <Heart />}
                                 </button>
 
-                                {/* Contenuto card */}
                                 <div className="car-card-body">
-                                    <h5 className="car-title">{car.title}</h5>
+                                    <h5 className="car-title">
+                                        {car.title}
+                                    </h5>
 
-                                    <Link to={`/cars/${car.id}`} className="btn btn-outline-primary w-100">
+                                    <Link
+                                        to={`/cars/${car.id}`}
+                                        className="btn btn-outline-primary w-100"
+                                    >
                                         Vedi Dettagli
                                     </Link>
                                 </div>

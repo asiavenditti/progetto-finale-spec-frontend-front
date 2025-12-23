@@ -1,16 +1,25 @@
-import { createContext, useState } from "react"
+import { createContext, useState, useEffect } from "react"
 import useFetch from "../hooks/useFetch"
 
 export const GlobalContext = createContext()
 const API_URL = import.meta.env.VITE_API_URL
 
 export default function GlobalProvider({ children }) {
-    // preferiti
-    const [favorites, setFavorites] = useState([])
-    // comparatore
+    // preferiti, inizializzati dal localStorage
+    const [favorites, setFavorites] = useState(() => {
+        const saved = localStorage.getItem('favorites')
+        return saved ? JSON.parse(saved) : []
+    })
+
+    // comparatore auto
     const [compareList, setCompareList] = useState([])
 
-    // aggiungi e rimuovi dal confronto
+    // sincronizza favorites con localStorage ad ogni aggiornamento
+    useEffect(() => {
+        localStorage.setItem('favorites', JSON.stringify(favorites))
+    }, [favorites])
+
+    // aggiungi o rimuovi auto dal comparatore
     const toggleCompare = (car) => {
         if (!car || !car.id) return;
 
@@ -28,21 +37,23 @@ export default function GlobalProvider({ children }) {
             }
         });
     };
+
     // pulisci il comparatore
-    const clearCompare = () => setCompareList([]);
+    const clearCompare = () => setCompareList([])
 
-    const isInCompare = (carId) => {
-        return compareList.some(c => c.id === carId)
-    }
+    // controlla se un'auto è nel comparatore
+    const isInCompare = (carId) => compareList.some(c => c.id === carId)
 
-
-
+    // aggiungi o rimuovi dai preferiti
     const toggleFavorite = (carId) => {
         setFavorites(prev =>
-            prev.includes(carId) ? prev.filter(id => id !== carId) : [...prev, carId]
-        );
-    };
+            prev.includes(carId)
+                ? prev.filter(id => id !== carId)
+                : [...prev, carId]
+        )
+    }
 
+    // dati auto dal server
     const { data, loading, error } = useFetch(`${API_URL}/cars`)
 
     return (
