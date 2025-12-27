@@ -13,15 +13,12 @@
     gap: 0.6rem;
     padding: 0.6rem 1.4rem;
     margin-bottom: 1.5rem;
-
     background: white;
     color: #764ba2;
     border: 2px solid #764ba2;
     border-radius: 30px;
-
     font-size: 0.95rem;
     font-weight: 600;
-
     cursor: pointer;
     transition: all 0.2s ease;
 }
@@ -43,6 +40,7 @@
     position: relative;
 }
 
+/* Contenitore badge + pulsanti */
 .badges-detail {
     display: flex;
     justify-content: space-between;
@@ -51,6 +49,7 @@
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
+    gap: 1rem;
 }
 
 .category-badge-detail {
@@ -257,8 +256,118 @@
     flex-shrink: 0;
 }
 
-/* RESPONSIVE */
+/* Bottone Confronto */
+.custom-compare-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 1.5rem;
+    border-radius: 20px;
+    border: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: white;
+    background: linear-gradient(to bottom, #23305a 0%, #1c2c57 100%);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    gap: 0.4rem;
+}
+
+.custom-compare-btn:hover {
+    background: linear-gradient(to bottom, #2b3b6e 0%, #1c294d 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.custom-compare-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.custom-compare-btn.is-active {
+    background: linear-gradient(to bottom, #e63946 0%, #a1001b 100%);
+}
+
+.custom-compare-btn.is-active:hover {
+    background: linear-gradient(to bottom, #f63a4a 0%, #c20f1e 100%);
+}
+
+/* Badge piccolo dentro bottone */
+.custom-compare-btn .badge-inline {
+    display: inline-block;
+    min-width: 20px;
+    height: 20px;
+    line-height: 20px;
+    padding: 6px;
+    border-radius: 10px;
+    background: #ff4d4f;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* RESPONSIVE - MOBILE  */
+@media (max-width: 768px) {
+    .badges-detail {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 2.8rem;
+    }
+
+    .custom-compare-btn {
+        order: 1;
+        flex: 0 0 auto;
+        margin-left: 0.5rem;
+        margin-top: 0;
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .category-badge-detail {
+        order: 0;
+    }
+
+    .custom-compare-btn .badge-inline {
+        margin-left: 0.3rem;
+    }
+}
+
+/* RESPONSIVE MOBILE XS */
+@media (max-width: 478px) {
+    .custom-compare-btn {
+        padding: 0.7rem 1rem;
+        font-size: 0.85rem;
+
+    }
+
+    .custom-compare-btn .badge-inline {
+        min-width: 18px;
+        height: 18px;
+        line-height: 18px;
+        font-size: 0.7rem;
+
+
+
+    }
+
+    .badges-detail {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 0.5rem;
+    }
+
+
+
+}
+
+/* RESPONSIVE TABLET */
 @media (max-width: 991px) {
+
+
+
     .image-section-detail {
         padding: 2rem;
     }
@@ -283,89 +392,4 @@
     .info-section-detail {
         padding: 2rem;
     }
-}
-
-@media (max-width: 576px) {
-    .image-section-detail {
-        padding: 1.5rem;
-    }
-
-    .car-title-detail {
-        font-size: 1.6rem;
-    }
-
-    .price-detail {
-        font-size: 1.5rem;
-        padding: 0.7rem 1.5rem;
-    }
-
-    .car-brand-detail {
-        font-size: 1rem;
-    }
-
-    .car-image-container-detail {
-        min-height: 250px;
-    }
-
-    .car-image-detail {
-        max-height: 280px;
-    }
-
-    .info-section-detail {
-        padding: 1.5rem;
-    }
-
-    .info-title-detail {
-        font-size: 1.2rem;
-    }
-
-    .badges-detail {
-        flex-direction: column;
-        gap: 1rem;
-        align-items: flex-start;
-    }
-}
-
-/* Confronto */
-
-.custom-compare-btn {
-    /* Dimensioni e Forma */
-    display: inline-block;
-    padding: 12px 30px;
-    border-radius: 20px;
-    border: none;
-
-    /* Font */
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: white;
-
-    /* Gradiente Leggero (Navy) */
-    background: linear-gradient(to bottom, #23305a 0%, #1c2c57 100%);
-
-    /* Ombra discreta per profondità */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-    transition: all 0.2s ease-in-out;
-    cursor: pointer;
-}
-
-.custom-compare-btn:hover {
-    /* Schiarisce leggermente al passaggio */
-    background: linear-gradient(to bottom, #2b3b6e 0%, #1c294d 100%);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.custom-compare-btn:active {
-    transform: translateY(0);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-/* Stato quando l'auto è già in confronto  */
-.custom-compare-btn.is-active {
-    background: linear-gradient(to bottom, #e63946 0%, #a1001b 100%);
-}
-
-.custom-compare-btn.is-active:hover {
-    background: linear-gradient(to bottom, #f63a4a 0%, #c20f1e 100%);
 }

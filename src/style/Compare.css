@@ -266,7 +266,7 @@
     }
 }
 
-/* RESPONSIVE - MOBILE */
+/* RESPONSIVE - MOBILE S */
 @media (max-width: 768px) {
     .compare-header {
         padding-bottom: 1.5rem;
@@ -326,10 +326,8 @@
     }
 }
 
-/* =========================
-   RESPONSIVE - MOBILE PICCOLO
-========================= */
-@media (max-width: 576px) {
+/*  RESPONSIVE - MOBILE XS  */
+@media (max-width: 478px) {
     .compare-title {
         font-size: 1.5rem;
     }

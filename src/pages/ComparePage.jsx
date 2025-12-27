@@ -48,14 +48,14 @@ export default function ComparePage() {
             // Fetch del record completo con tutte le proprietà
             const response = await fetch(`${API_URL}/cars/${selectedId}`);
             const result = await response.json();
-            const fullCarObject = result.car; // Estrai l'auto dall'oggetto risposta
+            const fullCarObject = result.car;
 
-            // Rimuovi l'auto precedente in quella posizione
+            // Rimuovo l'auto precedente in quella posizione
             if (compareList[index]) {
                 toggleCompare(compareList[index]);
             }
 
-            // Aggiungi la nuova auto con tutte le proprietà
+            // Aggiungo la nuova auto con tutte le proprietà
             if (fullCarObject) {
                 setTimeout(() => {
                     toggleCompare(fullCarObject);

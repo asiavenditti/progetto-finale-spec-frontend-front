@@ -10,6 +10,8 @@ export default function GlobalProvider({ children }) {
         const saved = localStorage.getItem('favorites')
         return saved ? JSON.parse(saved) : []
     })
+    // svuota i preferiti
+    const clearFavorites = () => setFavorites([]);
 
     // comparatore auto
     const [compareList, setCompareList] = useState([])
@@ -63,6 +65,7 @@ export default function GlobalProvider({ children }) {
             error,
             favorites,
             toggleFavorite,
+            clearFavorites,
             compareList,
             toggleCompare,
             clearCompare,

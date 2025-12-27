@@ -29,17 +29,37 @@ export default function DetailPage() {
     if (error || !car) {
         return (
             <div className="container mt-5">
-                <div className="alert alert-danger text-center">
-                    <h4>⚠️ Automobile non trovata</h4>
-                    <p>L'auto che stai cercando non esiste.</p>
-                    <Link to="/cars" className="btn btn-primary mt-3">
-                        Torna al Catalogo
-                    </Link>
+                <div className="row justify-content-center">
+                    <div className="col-md-8 col-lg-6">
+                        <div className="text-center">
+                            {/* Immagine */}
+                            <img
+                                src="/images/404.png"
+                                alt="Auto non trovata"
+                                className="img-fluid mb-3"
+                                style={{ maxWidth: '280px' }}
+                            />
+
+                            {/* Card */}
+                            <div className="card shadow border-0">
+                                <div className="card-body p-4">
+                                    <h3 className="card-title mb-2 fw-bold">
+                                        ⚠️ Automobile non trovata
+                                    </h3>
+                                    <p className="card-text text-muted mb-3">
+                                        L'auto che stai cercando non esiste nel nostro catalogo.
+                                    </p>
+                                    <Link to="/cars" className="btn btn-primary">
+                                        Torna al Catalogo
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         );
     }
-
     const isFavorite = favorites.includes(car.id);
     const isInComparison = isInCompare(car.id);
 
@@ -137,7 +157,7 @@ export default function DetailPage() {
                                 <h3 className="info-title-detail">Colori Disponibili</h3>
                                 <div className="colors-grid-detail">
                                     {car.colors.map((color, index) => (
-                                        <span key={index} className="color-badge-detail">
+                                        <span key={`${color}-${index}`} className="color-badge-detail">
                                             {color}
                                         </span>
                                     ))}

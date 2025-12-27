@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { GlobalContext } from '../context/GlobalContext';
 import { Heart, HeartFill } from 'react-bootstrap-icons';
 import '../style/CarsList.css';
-
+import CarCard from '../components/carCard';
 // debounce 
 const debounce = (callback, delay) => {
     let timer
@@ -107,18 +107,15 @@ export default function CarsListPage() {
 
     return (
         <div className="container py-5">
-            <h1 className="text-center mb-5 display-4 fw-bold">
-                Catalogo Vetture
-            </h1>
+            <h1 className="text-center mb-5 display-4 fw-bold">Catalogo Vetture</h1>
 
-            {/* filtri */}
+            {/* Filtri */}
             <div className="row g-3 mb-4">
                 <div className="col-md-4">
                     <input
                         type="text"
                         className="form-control"
                         placeholder="🔍 Cerca per titolo..."
-                        // ricerca con debounce
                         onChange={e => debounceSetSearch(e.target.value)}
                     />
                 </div>
@@ -131,9 +128,7 @@ export default function CarsListPage() {
                     >
                         <option value="">Tutte le categorie</option>
                         {categories.map(cat => (
-                            <option key={cat} value={cat}>
-                                {cat}
-                            </option>
+                            <option key={cat} value={cat}>{cat}</option>
                         ))}
                     </select>
                 </div>
@@ -152,7 +147,7 @@ export default function CarsListPage() {
                 </div>
             </div>
 
-            {/* lista risultati */}
+            {/* Lista risultati */}
             {filteredAndSortedCars.length === 0 ? (
                 <div className="alert alert-info text-center">
                     Nessun risultato trovato. Prova a modificare i filtri.
@@ -161,37 +156,12 @@ export default function CarsListPage() {
                 <div className="row g-4">
                     {filteredAndSortedCars.map(car => (
                         <div key={car.id} className="col-sm-6 col-md-4 col-lg-3">
-                            <div className="car-card">
-                                {/* badge categoria */}
-                                <span
-                                    className={`category-badge bg-${categoryColors[car.category] || 'dark'}`}
-                                >
-                                    {car.category}
-                                </span>
-
-                                {/* bottone preferiti */}
-                                <button
-                                    className="favorite-btn"
-                                    onClick={() => toggleFavorite(car.id)}
-                                >
-                                    {favorites.includes(car.id)
-                                        ? <HeartFill />
-                                        : <Heart />}
-                                </button>
-
-                                <div className="car-card-body">
-                                    <h5 className="car-title">
-                                        {car.title}
-                                    </h5>
-
-                                    <Link
-                                        to={`/cars/${car.id}`}
-                                        className="btn btn-outline-primary w-100"
-                                    >
-                                        Vedi Dettagli
-                                    </Link>
-                                </div>
-                            </div>
+                            <CarCard
+                                car={car}
+                                isFavorite={favorites.includes(car.id)}
+                                toggleFavorite={() => toggleFavorite(car.id)}
+                                categoryColors={categoryColors}
+                            />
                         </div>
                     ))}
                 </div>

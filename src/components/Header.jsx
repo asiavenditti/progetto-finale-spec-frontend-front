@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { GlobalContext } from '../context/GlobalContext';
 import FavoritesOffcanvas from './FavoritesOffcanvas';
 import '../style/Header.css';
@@ -7,21 +7,29 @@ import '../style/Header.css';
 export default function Header() {
     const location = useLocation();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const { favorites } = useContext(GlobalContext);
+    const { favorites, compareList } = useContext(GlobalContext);
     const [isOffcanvasOpen, setIsOffcanvasOpen] = useState(false);
-    const { compareList } = useContext(GlobalContext)
 
-    const isActive = (path) => {
-        return location.pathname === path ? 'active' : '';
-    };
+    const isActive = (path) => (location.pathname === path ? 'active' : '');
 
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    };
+    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+    const closeMenu = () => setIsMenuOpen(false);
 
-    const closeMenu = () => {
-        setIsMenuOpen(false);
-    };
+    // Per animare il badge al cambio numero (opzionale)
+    const [favCount, setFavCount] = useState(favorites.length);
+    const [compareCount, setCompareCount] = useState(compareList.length);
+
+    useEffect(() => {
+        if (favorites.length !== favCount) {
+            setFavCount(favorites.length);
+        }
+    }, [favorites, favCount]);
+
+    useEffect(() => {
+        if (compareList.length !== compareCount) {
+            setCompareCount(compareList.length);
+        }
+    }, [compareList, compareCount]);
 
     return (
         <>
@@ -58,6 +66,7 @@ export default function Header() {
                             >
                                 <span>Home</span>
                             </Link>
+
                             <Link
                                 to="/cars"
                                 className={`nav-link ${isActive('/cars')}`}
@@ -65,15 +74,20 @@ export default function Header() {
                             >
                                 <span>Catalogo</span>
                             </Link>
+
+                            {/* Confronta con badge affiancato */}
                             <Link
                                 to="/compare"
-                                className={`nav-link ${isActive('/compare')}`}
+                                className={`nav-link compare ${isActive('/compare')}`}
                                 onClick={closeMenu}
-                            >   Confronta {compareList.length > 0 && `(${compareList.length})`}
-
+                            >
+                                <span>Confronta</span>
+                                {compareList.length > 0 && (
+                                    <span className="badge-inline">{compareList.length}</span>
+                                )}
                             </Link>
 
-                            {/* Pulsante Preferiti */}
+                            {/* Preferiti con badge affiancato */}
                             <button
                                 className="favorites-toggle"
                                 onClick={() => {
@@ -81,7 +95,10 @@ export default function Header() {
                                     closeMenu();
                                 }}
                             >
-                                ❤️ Preferiti {favorites.length > 0 && `(${favorites.length})`}
+                                <span>❤️ Preferiti</span>
+                                {favorites.length > 0 && (
+                                    <span className="badge-inline">{favorites.length}</span>
+                                )}
                             </button>
                         </nav>
                     </div>
@@ -89,10 +106,7 @@ export default function Header() {
 
                 {/* Overlay (mobile) */}
                 {isMenuOpen && (
-                    <div
-                        className="menu-overlay"
-                        onClick={closeMenu}
-                    ></div>
+                    <div className="menu-overlay" onClick={closeMenu}></div>
                 )}
             </header>
 

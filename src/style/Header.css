@@ -17,7 +17,6 @@
 }
 
 /*  LOGO SECTION */
-
 .logo-section {
     display: flex;
     align-items: center;
@@ -77,7 +76,6 @@
 }
 
 /*HAMBURGER MENU MOBILE */
-
 .hamburger {
     display: none;
     flex-direction: column;
@@ -103,11 +101,7 @@
     background-color: #00d4ff;
 }
 
-
-
 /* MENU OVERLAY MOBILE */
-
-
 .menu-overlay {
     display: none;
     position: fixed;
@@ -131,8 +125,6 @@
 }
 
 /* NAVIGATION */
-
-
 .main-nav {
     display: flex;
     gap: 0.5rem;
@@ -188,14 +180,56 @@
     align-items: center;
 }
 
+/* Preferiti */
+.favorites-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
 
+/* Hover come i nav-link */
+.favorites-toggle:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+}
 
-
-.mobile-cta {
-    display: none;
+/* Badge inline migliorato */
+.badge-inline {
+    display: inline-block;
+    margin-left: 2px;
+    background: #ff4d4f;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 0 6px;
+    line-height: 20px;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    text-align: center;
+    vertical-align: middle;
+    transition: transform 0.2s ease;
 }
 
 
+
+/* Glow badge al passaggio del mouse */
+.favorites-toggle:hover .badge-inline,
+.nav-link.compare:hover .badge-inline {
+    box-shadow: 0 0 8px #ff4d4f, 0 0 15px #ff4d4f50;
+}
+
+/* RESPONSIVE - Mobile/Tablet */
 @media (max-width: 992px) {
     .logo-sub {
         display: none;
@@ -214,8 +248,6 @@
         font-size: 0.85rem;
     }
 }
-
-/* RESPONSIVE - MOBILE */
 
 @media (max-width: 768px) {
     .hamburger {
@@ -275,6 +307,21 @@
         box-shadow: none;
     }
 
+    .favorites-toggle {
+        justify-content: flex-start;
+        width: 100%;
+        padding: 1.2rem 2rem;
+        border-radius: 0;
+        border-left: 4px solid transparent;
+        gap: 0.5rem;
+    }
+
+    .favorites-toggle:hover {
+        background: rgba(255, 255, 255, 0.05);
+        transform: none;
+        border-left-color: #00d4ff;
+    }
+
     .nav-icon {
         font-size: 1.3rem;
     }
@@ -287,7 +334,9 @@
     }
 }
 
-@media (max-width: 480px) {
+/* RESPONSIVE MOBILE XS */
+
+@media (max-width: 478px) {
     .header-content {
         padding: 0.75rem 0;
     }
@@ -299,42 +348,5 @@
 
     .main-nav {
         width: 260px;
-    }
-}
-
-/* Preferiti */
-.favorites-toggle {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-
-    padding: 0.75rem 1.5rem;
-    background: transparent;
-    border: none;
-    border-radius: 8px;
-
-    color: rgba(255, 255, 255, 0.8);
-    font-weight: 500;
-    font-size: 0.95rem;
-
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-
-
-/* Hover come i nav-link */
-.favorites-toggle:hover {
-    color: white;
-    background: rgba(255, 255, 255, 0.08);
-    transform: translateY(-2px);
-}
-
-
-/* Mobile */
-@media (max-width: 768px) {
-    .favorites-toggle {
-        padding: 0.6rem 1rem;
-        font-size: 0.85rem;
     }
 }

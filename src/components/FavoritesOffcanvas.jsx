@@ -5,19 +5,18 @@ import { X, Trash } from 'react-bootstrap-icons';
 import '../style/Favorites.css';
 
 export default function FavoritesOffcanvas({ isOpen, onClose }) {
-    const { data, favorites, toggleFavorite } = useContext(GlobalContext);
+    const { data, favorites, toggleFavorite, clearFavorites } = useContext(GlobalContext);
 
     // Ottieni solo le auto nei preferiti 
-    const favoriteCars = useMemo(() => {
-        if (!data || !favorites.length) return [];
-        return data.filter(car => favorites.includes(car.id));
-    }, [data, favorites]);
+    const favoriteCars = (data && favorites.length > 0)
+        ? data.filter(car => favorites.includes(car.id))
+        : [];
 
     const clearAllFavorites = () => {
         if (window.confirm('Vuoi rimuovere tutti i preferiti?')) {
-            favoriteCars.forEach(car => toggleFavorite(car.id));
+            clearFavorites();
         }
-    };
+    }
 
     return (
         <>

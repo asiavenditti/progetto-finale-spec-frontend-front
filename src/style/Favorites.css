@@ -189,7 +189,7 @@
     color: white;
 }
 
-/* MOBILE */
+/* MOBILE  S*/
 @media (max-width: 576px) {
     .favorites-offcanvas {
         left: -320px;

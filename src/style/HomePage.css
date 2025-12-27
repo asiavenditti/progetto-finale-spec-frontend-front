@@ -139,6 +139,8 @@
     }
 }
 
+/* RESPONSIVE TABLET/MOBILE(S) */
+
 @media (max-width: 768px) {
     .hero-section {
         padding: 0 1.5rem;
@@ -146,16 +148,20 @@
 
     .hero-content h1 {
         font-size: 2.4rem;
+        padding-top: 2rem;
+
     }
 
     .hero-content p {
+
         font-size: 1.05rem;
     }
 
 
 }
 
-@media (max-width: 480px) {
+/* RESPONSIVE - MOBILE XS */
+@media (max-width: 478px) {
     .hero-content h1 {
         font-size: 2rem;
     }
@@ -163,5 +169,15 @@
     .cta-btn {
         width: 100%;
         padding: 1rem 2.6rem;
+
+
     }
+
+
+    .hero-content p {
+        font-size: 1.2rem;
+        font-weight: 400;
+
+    }
+
 }
