@@ -7,11 +7,14 @@ import '../style/Favorites.css';
 export default function FavoritesOffcanvas({ isOpen, onClose }) {
     const { data, favorites, toggleFavorite, clearFavorites } = useContext(GlobalContext);
 
-    // Ottieni solo le auto nei preferiti 
-    const favoriteCars = (data && favorites.length > 0)
-        ? data.filter(car => favorites.includes(car.id))
-        : [];
+    // Ottieni nei preferiti e ricalcolo se cambiano
+    const favoriteCars = useMemo(() => {
+        if (!data || favorites.length === 0)
+            return [];
+        return data.filter(car => favorites.includes(car.id));
+    }, [data, favorites]);
 
+    // svuota preferiti
     const clearAllFavorites = () => {
         if (window.confirm('Vuoi rimuovere tutti i preferiti?')) {
             clearFavorites();

@@ -6,10 +6,13 @@ export default function ComparePage() {
     const { data, compareList, toggleCompare, clearCompare, API_URL } = useContext(GlobalContext);
     const [loading, setLoading] = useState(false);
 
+    // estraggo le auto nella lista di confronto
     const firstCar = compareList[0];
     const secondCar = compareList[1];
+
     const bothSelected = firstCar && secondCar;
 
+    // etichette proprietà
     const propLabels = {
         title: 'Modello',
         category: 'Categoria',
@@ -26,6 +29,7 @@ export default function ComparePage() {
         rating: 'Valutazione'
     };
 
+    // lista di chiavi
     const compareProps = Object.keys(propLabels);
 
     const formatValue = (key, value) => {

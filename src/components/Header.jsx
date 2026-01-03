@@ -5,31 +5,36 @@ import FavoritesOffcanvas from './FavoritesOffcanvas';
 import '../style/Header.css';
 
 export default function Header() {
+
     const location = useLocation();
+    // menù responsive
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const { favorites, compareList } = useContext(GlobalContext);
+    // preferiti
+    const { favorites, compareList } = useContext(GlobalContext)
     const [isOffcanvasOpen, setIsOffcanvasOpen] = useState(false);
-
-    const isActive = (path) => (location.pathname === path ? 'active' : '');
-
-    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-    const closeMenu = () => setIsMenuOpen(false);
-
-    // Per animare il badge al cambio numero (opzionale)
+    // Animazione del badge al cambio numero 
     const [favCount, setFavCount] = useState(favorites.length);
     const [compareCount, setCompareCount] = useState(compareList.length);
 
+    // funzioni utility
+    const isActive = (path) => (location.pathname === path ? 'active' : '');
+    const toggleMenu = () => setIsMenuOpen(prev => !prev);
+    const closeMenu = () => setIsMenuOpen(false);
+
+    // preferiti
     useEffect(() => {
         if (favorites.length !== favCount) {
             setFavCount(favorites.length);
         }
     }, [favorites, favCount]);
 
+    // confronto
     useEffect(() => {
         if (compareList.length !== compareCount) {
             setCompareCount(compareList.length);
         }
     }, [compareList, compareCount]);
+
 
     return (
         <>

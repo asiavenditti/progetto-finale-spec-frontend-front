@@ -20,7 +20,7 @@ const debounce = (callback, delay) => {
 export default function CarsListPage() {
     const { data, loading, error, favorites, toggleFavorite } = useContext(GlobalContext);
 
-    // stato per la ricerca
+    // stato per la ricerca*
     const [searchTerm, setSearchTerm] = useState('');
     // stato per filtro categoria
     const [categoryFilter, setCategoryFilter] = useState('');
@@ -34,21 +34,20 @@ export default function CarsListPage() {
     );
 
     // ottengo le categorie 
-    const categories = (() => {
-        if (!data) return [];
-        return [...new Set(data.map(car => car.category))];
-    })();
+    const categories = data
+        ? [...new Set(data.map(car => car.category))]
+        : [];
 
     // filtro e ordinamento con useMemo
     const filteredAndSortedCars = useMemo(() => {
         if (!data) return [];
 
-        // filtro per titolo e categoria
+        // filtro per titolo 
         let result = [...data].filter(car => {
             const matchesSearch = car.title
                 .toLowerCase()
                 .includes(searchTerm.toLowerCase());
-
+            // filtro per categoria
             const matchesCategory = categoryFilter
                 ? car.category === categoryFilter
                 : true;

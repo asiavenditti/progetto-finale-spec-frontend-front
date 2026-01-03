@@ -5,21 +5,32 @@ export const GlobalContext = createContext()
 const API_URL = import.meta.env.VITE_API_URL
 
 export default function GlobalProvider({ children }) {
-    // preferiti, inizializzati dal localStorage
+    // preferiti inizializzati dal localStorage
     const [favorites, setFavorites] = useState(() => {
         const saved = localStorage.getItem('favorites')
         return saved ? JSON.parse(saved) : []
     })
-    // svuota i preferiti
-    const clearFavorites = () => setFavorites([]);
 
-    // comparatore auto
-    const [compareList, setCompareList] = useState([])
+    // aggiungi o rimuovi dai preferiti
+    const toggleFavorite = (carId) => {
+        setFavorites(prev =>
+            prev.includes(carId)
+                ? prev.filter(id => id !== carId)
+                : [...prev, carId]
+        )
+    }
 
     // sincronizza favorites con localStorage ad ogni aggiornamento
     useEffect(() => {
         localStorage.setItem('favorites', JSON.stringify(favorites))
     }, [favorites])
+
+    // svuota i preferiti
+    const clearFavorites = () => setFavorites([]);
+
+
+    // comparatore auto
+    const [compareList, setCompareList] = useState([])
 
     // aggiungi o rimuovi auto dal comparatore
     const toggleCompare = (car) => {
@@ -28,6 +39,7 @@ export default function GlobalProvider({ children }) {
         setCompareList(prev => {
             const isAlreadyIn = prev.some(c => c.id === car.id);
 
+            // rimuovo
             if (isAlreadyIn) {
                 return prev.filter(c => c.id !== car.id);
             } else {
@@ -35,6 +47,7 @@ export default function GlobalProvider({ children }) {
                     alert("Puoi confrontare solo 2 auto alla volta");
                     return prev;
                 }
+                // aggiungo
                 return [...prev, car];
             }
         });
@@ -46,14 +59,6 @@ export default function GlobalProvider({ children }) {
     // controlla se un'auto è nel comparatore
     const isInCompare = (carId) => compareList.some(c => c.id === carId)
 
-    // aggiungi o rimuovi dai preferiti
-    const toggleFavorite = (carId) => {
-        setFavorites(prev =>
-            prev.includes(carId)
-                ? prev.filter(id => id !== carId)
-                : [...prev, carId]
-        )
-    }
 
     // dati auto dal server
     const { data, loading, error } = useFetch(`${API_URL}/cars`)

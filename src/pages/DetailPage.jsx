@@ -10,13 +10,12 @@ export default function DetailPage() {
     const navigate = useNavigate();
 
     // estrazione dal context
-    const { favorites, toggleFavorite, toggleCompare, isInCompare } = useContext(GlobalContext);
+    const { favorites, toggleFavorite, toggleCompare, isInCompare, API_URL } = useContext(GlobalContext);
 
-    const API_URL = import.meta.env.VITE_API_URL;
     const { data, loading, error } = useFetch(`${API_URL}/cars/${id}`);
-
     const car = data?.car;
 
+    // spinner mentre la fetch è in corso
     if (loading) {
         return (
             <div className="text-center mt-5">
@@ -25,7 +24,7 @@ export default function DetailPage() {
             </div>
         );
     }
-
+    // errore di rete o id non esistente
     if (error || !car) {
         return (
             <div className="container mt-5">
@@ -60,6 +59,7 @@ export default function DetailPage() {
             </div>
         );
     }
+
     const isFavorite = favorites.includes(car.id);
     const isInComparison = isInCompare(car.id);
 
