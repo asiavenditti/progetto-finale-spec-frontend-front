@@ -5,6 +5,9 @@ export const GlobalContext = createContext()
 const API_URL = import.meta.env.VITE_API_URL
 
 export default function GlobalProvider({ children }) {
+
+    // lista auto da comparare
+    const [compareList, setCompareList] = useState([])
     // preferiti inizializzati dal localStorage
     const [favorites, setFavorites] = useState(() => {
         const saved = localStorage.getItem('favorites')
@@ -29,8 +32,6 @@ export default function GlobalProvider({ children }) {
     const clearFavorites = () => setFavorites([]);
 
 
-    // comparatore auto
-    const [compareList, setCompareList] = useState([])
 
     // aggiungi o rimuovi auto dal comparatore
     const toggleCompare = (car) => {

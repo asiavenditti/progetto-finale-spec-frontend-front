@@ -6,11 +6,13 @@ import '../style/Header.css';
 
 export default function Header() {
 
+    // link attivo
     const location = useLocation();
     // menù responsive
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    // preferiti
+    // lista preferiti e comparatore dal context
     const { favorites, compareList } = useContext(GlobalContext)
+    // offcanvanvas
     const [isOffcanvasOpen, setIsOffcanvasOpen] = useState(false);
     // Animazione del badge al cambio numero 
     const [favCount, setFavCount] = useState(favorites.length);
@@ -21,14 +23,14 @@ export default function Header() {
     const toggleMenu = () => setIsMenuOpen(prev => !prev);
     const closeMenu = () => setIsMenuOpen(false);
 
-    // preferiti
+    // aggiornamento preferiti
     useEffect(() => {
         if (favorites.length !== favCount) {
             setFavCount(favorites.length);
         }
     }, [favorites, favCount]);
 
-    // confronto
+    // aggiornamento confronto
     useEffect(() => {
         if (compareList.length !== compareCount) {
             setCompareCount(compareList.length);

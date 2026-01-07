@@ -29,9 +29,7 @@ export default function CarsListPage() {
 
     // funzione debounced con useCallback
     const debounceSetSearch = useCallback(
-        debounce(setSearchTerm, 500),
-        []
-    );
+        debounce(setSearchTerm, 500), []);
 
     // ottengo le categorie 
     const categories = data

@@ -12,6 +12,13 @@ export default function ComparePage() {
 
     const bothSelected = firstCar && secondCar;
 
+    // svuota confronto
+    const clearComparision = () => {
+        if (window.confirm('Vuoi rimuovere le auto dal confronto?')) {
+            clearCompare();
+        }
+    }
+
     // etichette proprietà
     const propLabels = {
         title: 'Modello',
@@ -71,6 +78,7 @@ export default function ComparePage() {
         } finally {
             setLoading(false);
         }
+
     };
 
     return (
@@ -78,7 +86,7 @@ export default function ComparePage() {
             <div className="compare-header">
                 <h1 className="compare-title"> Confronta Automobili</h1>
                 {compareList.length > 0 && (
-                    <button className="clear-compare-btn" onClick={clearCompare}>
+                    <button className="clear-compare-btn" onClick={clearComparision}>
                         Svuota Confronto
                     </button>
                 )}

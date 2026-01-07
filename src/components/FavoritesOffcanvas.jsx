@@ -7,7 +7,7 @@ import '../style/Favorites.css';
 export default function FavoritesOffcanvas({ isOpen, onClose }) {
     const { data, favorites, toggleFavorite, clearFavorites } = useContext(GlobalContext);
 
-    // Ottieni nei preferiti e ricalcolo se cambiano
+    // ottengo preferiti con useMemo
     const favoriteCars = useMemo(() => {
         if (!data || favorites.length === 0)
             return [];

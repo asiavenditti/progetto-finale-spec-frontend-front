@@ -9,7 +9,6 @@ export default function useFetch(url) {
 
     useEffect(() => {
 
-
         async function fetchData() {
             try {
                 // reset degli stati prima della richiesta
