@@ -32,7 +32,6 @@ export default function GlobalProvider({ children }) {
     const clearFavorites = () => setFavorites([]);
 
 
-
     // aggiungi o rimuovi auto dal comparatore
     const toggleCompare = (car) => {
         if (!car || !car.id) return;

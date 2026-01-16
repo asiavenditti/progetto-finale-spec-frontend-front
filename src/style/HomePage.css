@@ -131,53 +131,61 @@
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
 }
 
-/* RESPONSIVE */
 
-@media (max-width: 1024px) {
-    .hero-content h1 {
-        font-size: 2.8rem;
-    }
-}
 
-/* RESPONSIVE TABLET/MOBILE(S) */
+/* =========================
+   RESPONSIVE – TABLET / MOBILE
+========================= */
 
 @media (max-width: 768px) {
     .hero-section {
+        min-height: 100svh;
         padding: 0 1.5rem;
+    }
+
+    .hero-content.centered {
+        margin-top: 6.5rem;
+        max-width: 90%;
     }
 
     .hero-content h1 {
         font-size: 2.4rem;
-        padding-top: 2rem;
-
     }
 
     .hero-content p {
-
         font-size: 1.05rem;
     }
 
-
+    .hero-overlay {
+        background: radial-gradient(circle at center,
+                rgba(10, 14, 30, 0.35) 25%,
+                rgba(110, 31, 162, 0.45) 60%,
+                rgba(10, 14, 30, 0.65) 100%);
+    }
 }
 
-/* RESPONSIVE - MOBILE XS */
+/* =========================
+   RESPONSIVE – MOBILE XS
+========================= */
+
 @media (max-width: 478px) {
+    .hero-content.centered {
+        margin-top: 5.5rem;
+    }
+
     .hero-content h1 {
         font-size: 2rem;
+        line-height: 1.15;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+        margin-bottom: 2.2rem;
     }
 
     .cta-btn {
         width: 100%;
+        max-width: 300px;
         padding: 1rem 2.6rem;
-
-
     }
-
-
-    .hero-content p {
-        font-size: 1.2rem;
-        font-weight: 400;
-
-    }
-
 }
