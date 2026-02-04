@@ -38,49 +38,51 @@ export default function FavoritesOffcanvas({ isOpen, onClose }) {
 
                 {/* Contenuto */}
                 <div className="favorites-body">
-                    {favoriteCars.length === 0 ? (
-                        <div className="empty-favorites">
-                            <p>Nessun preferito ancora</p>
-                            <small>Aggiungi auto cliccando sul ❤️</small>
-                        </div>
-                    ) : (
-                        <>
-                            {favoriteCars.map(car => (
-                                <div key={car.id} className="favorite-card">
-                                    <div className="favorite-info">
-                                        <h5 className="favorite-title">{car.title}</h5>
-                                        <p className="favorite-meta">
-                                            <span className="favorite-category">{car.category}</span>
-                                        </p>
-                                    </div>
+                    <div className="favorites-content">
+                        {favoriteCars.length === 0 ? (
+                            <div className="empty-favorites">
+                                <p>Nessun preferito ancora</p>
+                                <small>Aggiungi auto cliccando sul ❤️</small>
+                            </div>
+                        ) : (
+                            <>
+                                {favoriteCars.map(car => (
+                                    <div key={car.id} className="favorite-card">
+                                        <div className="favorite-info">
+                                            <h5 className="favorite-title">{car.title}</h5>
+                                            <p className="favorite-meta">
+                                                <span className="favorite-category">{car.category}</span>
+                                            </p>
+                                        </div>
 
-                                    <div className="favorite-actions">
-                                        <Link
-                                            to={`/cars/${car.id}`}
-                                            className="btn-detail"
-                                            onClick={onClose}
-                                        >
-                                            Dettagli
-                                        </Link>
-                                        <button
-                                            className="btn-remove"
-                                            onClick={() => toggleFavorite(car.id)}
-                                        >
-                                            <Trash size={16} />
-                                        </button>
+                                        <div className="favorite-actions">
+                                            <Link
+                                                to={`/cars/${car.id}`}
+                                                className="btn-detail"
+                                                onClick={onClose}
+                                            >
+                                                Dettagli
+                                            </Link>
+                                            <button
+                                                className="btn-remove"
+                                                onClick={() => toggleFavorite(car.id)}
+                                            >
+                                                <Trash size={16} />
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
-                            ))}
+                                ))}
 
-                            {/* Bottone svuota tutti */}
-                            <button
-                                className="clear-all-btn"
-                                onClick={clearAllFavorites}
-                            >
-                                Svuota Tutti
-                            </button>
-                        </>
-                    )}
+                                {/* Bottone svuota tutti */}
+                                <button
+                                    className="clear-all-btn"
+                                    onClick={clearAllFavorites}
+                                >
+                                    Svuota Tutti
+                                </button>
+                            </>
+                        )}
+                    </div>
                 </div>
             </div>
         </>
