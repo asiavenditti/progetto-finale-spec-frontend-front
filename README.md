@@ -19,7 +19,6 @@ Fornire uno strumento semplice ed efficace per aiutare gli utenti a scegliere l'
 L'app si collega a un'**API esterna** per recuperare dati delle auto. L'URL è configurato tramite variabile d'ambiente `VITE_API_URL`. I dati sono in formato JSON: modello, categoria, prezzo, caratteristiche tecniche.
 
 
-```md
 ## 🚀 Comandi Disponibili
 - `npm run dev` → Avvia server di sviluppo con hot reload  
 - `npm run build` → Build produzione nella cartella `dist`  
