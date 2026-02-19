@@ -45,20 +45,20 @@ Creare uno strumento pratico per aiutare gli utenti nella scelta dell'auto ideal
 
 ### Frontend
 
-React 18+ - Componenti e Hooks
-React Router - Navigazione SPA
-Vite - Build tool e dev server
-React Bootstrap - UI Components e styling
-Bootstrap Icons - Iconografia
-ESLint - Code quality
+- React 18+ - Componenti e Hooks
+- React Router - Navigazione SPA
+- Vite - Build tool e dev server
+- React Bootstrap - UI Components e styling
+- Bootstrap Icons - Iconografia
+- ESLint - Code quality
 
 
 ### API & State Management
 
-Context API - Gestione stato globale
-Custom Hooks - Fetch API con error handling
-localStorage - Persistenza preferiti
-VITE_API_URL - Configurazione esterna
+- Context API - Gestione stato globale
+- Custom Hooks - Fetch API con error handling
+- localStorage - Persistenza preferiti
+- VITE_API_URL - Configurazione esterna
 
 
 
@@ -93,7 +93,7 @@ npm run preview
 
 # Lint code
 npm run lint
-
+```
 
 
 ## Funzionalità Implementate
